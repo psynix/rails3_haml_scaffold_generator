@@ -2,6 +2,8 @@
 
 Essentially just a copy of the Rails 3 ERB generator with HAML replacements for the templates.
 
+Original idea from: http://paulbarry.com/articles/2010/01/13/customizing-generators-in-rails-3
+
 == Installation
 
 1. rails <appname>
