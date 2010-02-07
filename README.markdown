@@ -42,7 +42,7 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 7. Create stuff with:
 
         rails generate controller ControllerName index
-        rails generate maile ExamplesNotifications
+        rails generate mailer ExamplesNotifications
         rails generate scaffold FancyModel
 
 ## TODO
