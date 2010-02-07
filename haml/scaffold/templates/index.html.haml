@@ -1,0 +1,22 @@
+%h1 Listing <%= plural_name %>
+
+%table
+  %thead
+    %tr
+<% for attribute in attributes -%>
+      %th= <%= attribute.human_name %>
+<% end -%>
+      %th{ :colspan => 3 }
+  
+  %tbody
+    - for <%= singular_name %> in @<%= plural_name %>
+      %tr{ :class => cycle(:odd, :even) }
+<% for attribute in attributes -%>
+        %th= <%= singular_name %>.<%= attribute.name %>
+<% end -%>
+        %td= link_to 'Show', <%= singular_name %>
+        %td= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
+        %td= link_to 'Destroy', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete
+
+%br
+= link_to 'New <%= singular_name %>', new_<%= singular_name %>_path
