@@ -6,7 +6,7 @@ Essentially just a copy of the Rails 3 ERB generator with HAML replacements for 
 
 1. rails <appname>
 2. cd <appname>
-3. git checkout git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators
+3. git clone git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators
 4. Edit config/application.rb and add the following:
 
   config.generators do |g|
