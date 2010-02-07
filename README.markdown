@@ -44,6 +44,12 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails generate controller ControllerName index
         rails generate mailer ExamplesNotifications
         rails generate scaffold FancyModel
+    
+    ... or if you like to mix it up with ERB, ignore step 5 and use ...
+
+        rails generate haml:controller ControllerName index
+        rails generate haml:mailer ExamplesNotifications
+        rails generate haml:scaffold FancyModel
 
 ## TODO
 
