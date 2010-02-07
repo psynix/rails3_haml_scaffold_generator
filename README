@@ -6,11 +6,14 @@ Essentially just a copy of the Rails 3 ERB generator with HAML replacements for 
 
 1. rails <appname>
 2. cd <appname>
-3. git clone git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators
-4. Edit config/application.rb and add the following:
+3. Edit "Gemfile" to add "gem haml"
+4. Either "gem install haml" or "bundle install"
+5. Run "haml --rails ."
+6. Edit config/application.rb and add the following:
 
   config.generators do |g|
     g.template_engine :haml
   end
 
-5. rails generate scaffold Stuff
+7. git clone git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators/haml
+8. rails generate scaffold Stuff
