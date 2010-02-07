@@ -1,8 +1,8 @@
-require 'generators/haml'
+require 'generators/haml/base.rb'
 
 module Haml
   module Generators
-    class ControllerGenerator < Base
+    class ControllerGenerator < Haml::Generators::Base
       argument :actions, :type => :array, :default => [], :banner => "action action"
 
       def create_view_files

@@ -1,8 +1,8 @@
-require 'generators/haml'
+require 'generators/haml/base.rb'
 
 module Haml
   module Generators
-    class MailerGenerator < Base
+    class MailerGenerator < Haml::Generators::Base
       argument :actions, :type => :array, :default => [], :banner => "method method"
 
       def create_view_folder

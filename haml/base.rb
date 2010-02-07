@@ -7,7 +7,7 @@ module Haml
       #
       def self.source_root
         @_haml_source_root ||= begin
-          File.expand_path(File.join(File.dirname(__FILE__), 'haml', generator_name, 'templates')) if generator_name
+          File.expand_path(File.join(File.dirname(__FILE__), generator_name, 'templates')) if generator_name
         end
       end
     end
