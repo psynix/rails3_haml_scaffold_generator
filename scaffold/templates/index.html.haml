@@ -12,7 +12,7 @@
     - for <%= singular_name %> in @<%= plural_name %>
       %tr{ :class => cycle(:odd, :even) }
 <% for attribute in attributes -%>
-        %th= <%= singular_name %>.<%= attribute.name %>
+        %td= <%= singular_name %>.<%= attribute.name %>
 <% end -%>
         %td= link_to 'Show', <%= singular_name %>
         %td= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
