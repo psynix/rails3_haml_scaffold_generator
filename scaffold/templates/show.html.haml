@@ -1,6 +1,6 @@
 <% for attribute in attributes -%>
 %p
-  %strong= <%= attribute.human_name %>:
+  %strong <%= attribute.human_name %>:
   = @<%= singular_name %>.<%= attribute.name %>
 <% end -%>
 
