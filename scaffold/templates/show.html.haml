@@ -5,6 +5,6 @@
 
 %dl
 <% for attribute in attributes -%>
-  %dt= <%= class_name %>.human_attribute_name :<%= attribute %>
+  %dt= <%= class_name %>.human_attribute_name :<%= attribute.name %>
   %dd= @<%= singular_name %>.<%= attribute.name %>
 <% end -%>

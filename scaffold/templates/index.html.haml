@@ -5,7 +5,7 @@
   %thead
     %tr
 <% for attribute in attributes -%>
-      %th= <%= class_name %>.human_attribute_name :<%= attribute %>
+      %th= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% end -%>
       %th{ :colspan => 3 }
   
