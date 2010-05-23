@@ -1,10 +1,11 @@
-%h1 Listing <%= plural_name %>
+%h1= t('.title')
+%p= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path
 
 %table
   %thead
     %tr
 <% for attribute in attributes -%>
-      %th <%= attribute.human_name %>
+      %th= <%= class_name %>.human_attribute_name :<%= attribute %>
 <% end -%>
       %th{ :colspan => 3 }
   
@@ -14,9 +15,6 @@
 <% for attribute in attributes -%>
         %td= <%= singular_name %>.<%= attribute.name %>
 <% end -%>
-        %td= link_to 'Show', <%= singular_name %>
-        %td= link_to 'Edit', edit_<%= singular_name %>_path(<%= singular_name %>)
-        %td= link_to 'Destroy', <%= singular_name %>, :confirm => 'Are you sure?', :method => :delete
-
-%br
-= link_to 'New <%= singular_name %>', new_<%= singular_name %>_path
+        %td.action= link_to t('show'), <%= singular_name %>
+        %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
+        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure'), :method => :delete

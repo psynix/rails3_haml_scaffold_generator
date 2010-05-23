@@ -1,7 +1,10 @@
-<% for attribute in attributes -%>
+%h1= t '.title'
 %p
-  %strong <%= attribute.human_name %>:
-  = @<%= singular_name %>.<%= attribute.name %>
-<% end -%>
+  = link_to t('back'), <%= plural_name %>_path
+  = link_to t('edit'), edit_<%= singular_name %>_path(@<%= singular_name %>)
 
-== #{ link_to 'Edit', edit_<%= singular_name %>_path(@<%= singular_name %>) } | #{ link_to 'Back', <%= plural_name %>_path }
+%dl
+<% for attribute in attributes -%>
+  %dt= <%= class_name %>.human_attribute_name :<%= attribute %>
+  %dd= @<%= singular_name %>.<%= attribute.name %>
+<% end -%>

@@ -1,10 +1,15 @@
-# Rails 3 HAML Scaffold Generator
+# Information about this fork
+
+This for is no longer following the normal scaffolding layout of Rails.
+It uses I18n backend for headings, model attributes names etc in it's views.
+
+## Rails 3 HAML Scaffold Generator
 
 Essentially just a copy of the Rails 3 ERB generator with HAML replacements for the templates.
 
 Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
-## Installation
+### Installation
 
 1. Generate your new rails application:
 

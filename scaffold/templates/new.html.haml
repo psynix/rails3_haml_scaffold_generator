@@ -1,5 +1,3 @@
-%h1 New <%= singular_name %>
-
+%h1= t '.title'
+%p= link_to t('back'), <%= plural_name %>_path
 = render 'form'
-
-= link_to 'Back', <%= plural_name %>_path
