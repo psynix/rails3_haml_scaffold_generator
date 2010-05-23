@@ -7,7 +7,7 @@
 <% for attribute in attributes -%>
       %th= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% end -%>
-      %th{ :colspan => 3 }
+      %th{:colspan => 3}= t 'actions'
   
   %tbody
     - for <%= singular_name %> in @<%= plural_name %>
