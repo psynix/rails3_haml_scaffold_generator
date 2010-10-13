@@ -17,4 +17,4 @@
 <% end -%>
         %td.action= link_to t('show'), <%= singular_name %>
         %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
-        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure'), :method => :delete
+        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete
