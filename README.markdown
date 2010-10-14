@@ -38,11 +38,11 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
 6. Either 
 
-        git clone git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators/haml
+        git clone git://github.com/dima4p/rails3_haml_scaffold_generator.git lib/generators/haml
 
     ...or...
 
-        git submodule add git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators/haml
+        git submodule add git://github.com/dima4p/rails3_haml_scaffold_generator.git lib/generators/haml
   
 7. Create stuff with:
 
