@@ -3,9 +3,9 @@
     #errorExplanation
       %h2= "#{pluralize(@<%= singular_name %>.errors.count, 'error')} prohibited this user from being saved:"
       %ul
-      - @<%= singular_name %>.errors.full_messages.each do |msg|
-        %li= msg
-  
+        - @<%= singular_name %>.errors.full_messages.each do |msg|
+          %li= msg
+
 <% for attribute in attributes -%>
   .field
     = f.label :<%= attribute.name %>
