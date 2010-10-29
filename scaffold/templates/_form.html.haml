@@ -1,7 +1,8 @@
 = form_for(@<%= singular_name %>) do |f|
   - if @<%= singular_name %>.errors.any?
     #errorExplanation
-      %h2= "#{pluralize(@<%= singular_name %>.errors.count, 'error')} prohibited this user from being saved:"
+      %h2
+        = t 'errors.template.header', :model => t('.<%= singular_name %>'), :count => @<%= singular_name %>.errors.count
       %ul
         - @<%= singular_name %>.errors.full_messages.each do |msg|
           %li= msg
