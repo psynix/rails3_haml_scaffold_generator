@@ -1,6 +1,6 @@
 = form_for(@<%= singular_name %>) do |f|
   - if @<%= singular_name %>.errors.any?
-    #errorExplanation
+    #error_explanation
       %h2
         = t 'errors.template.header', :model => t('.<%= singular_name %>'), :count => @<%= singular_name %>.errors.count
       %ul
