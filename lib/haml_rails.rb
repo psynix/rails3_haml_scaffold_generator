@@ -1,6 +1,6 @@
 require 'rails/generators/named_base'
 
-module Haml
+module HamlRails
   module Generators
     class Base < Rails::Generators::NamedBase
       # Automatically sets the source root based on the class name.

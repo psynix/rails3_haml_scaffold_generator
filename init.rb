@@ -1,0 +1,1 @@
+require 'haml_rails'
