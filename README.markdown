@@ -16,7 +16,7 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails new ApplicationName
         cd ApplicationName
 
-2. Edit "Gemfile" and add "gem haml" and "gem haml_rails_" to the gem list
+2. Edit "Gemfile" and add "gem haml" and "gem haml_rails" to the gem list
 3. Either
 
         gem install haml
@@ -36,7 +36,7 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails generate mailer ExamplesNotifications
         rails generate scaffold FancyModel
     
-    ... or if you like to mix it up with ERB, ignore step 5 and use ...
+    ... or if you like to mix it up with ERB, ignore step 4 and use ...
 
         rails generate haml:controller ControllerName index
         rails generate haml:mailer ExamplesNotifications
