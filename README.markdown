@@ -42,5 +42,8 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails generate haml:mailer ExamplesNotifications
         rails generate haml:scaffold FancyModel
 
+## TODO
+
+* RSpec it (?)
 
 [OriginalIdea]: http://paulbarry.com/articles/2010/01/13/customizing-generators-in-rails-3
