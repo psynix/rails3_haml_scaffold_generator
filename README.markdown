@@ -45,5 +45,6 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 ## TODO
 
 * RSpec it (?)
+* Add Contributors at the CONTRIBUTORS file
 
 [OriginalIdea]: http://paulbarry.com/articles/2010/01/13/customizing-generators-in-rails-3
