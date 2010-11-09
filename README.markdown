@@ -13,13 +13,14 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
 1. Generate your new rails application:
 
-        rails ApplicationName
+        rails new ApplicationName
         cd ApplicationName
 
-2. Edit "Gemfile" and add "gem haml" to the gem list
+2. Edit "Gemfile" and add "gem haml" and "gem haml_rails_" to the gem list
 3. Either
 
         gem install haml
+        gem install haml_rails
 
     ...or...
 
@@ -27,24 +28,9 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
 
 4. Run
 
-        haml --rails .
-        
-5. Edit config/application.rb and add the following:
-
-        config.generators do |g|
-            g.template_engine :haml
-        end
-
-
-6. Either 
-
-        git clone git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators/haml
-
-    ...or...
-
-        git submodule add git://github.com/psynix/rails3_haml_scaffold_generator.git lib/generators/haml
+        rails generate haml_rails:install
   
-7. Create stuff with:
+5. Create stuff with:
 
         rails generate controller ControllerName index
         rails generate mailer ExamplesNotifications
@@ -56,8 +42,5 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails generate haml:mailer ExamplesNotifications
         rails generate haml:scaffold FancyModel
 
-## TODO
-
-* Gemify (?)
 
 [OriginalIdea]: http://paulbarry.com/articles/2010/01/13/customizing-generators-in-rails-3

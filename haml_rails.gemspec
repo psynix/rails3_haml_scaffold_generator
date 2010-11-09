@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rafael Felix"]
-  s.date = %q{2010-11-07}
+  s.date = %q{2010-11-08}
   s.description = %q{HAML scaffold template engine}
   s.email = %q{felix.rafael@gmail.com}
   s.extra_rdoc_files = [
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     "init.rb",
      "lib/generators/haml_rails/install_generator.rb",
+     "lib/generators/haml_rails/templates/base.rb",
      "lib/generators/haml_rails/templates/controller/controller_generator.rb",
      "lib/generators/haml_rails/templates/controller/templates/view.html.haml",
      "lib/generators/haml_rails/templates/mailer/mailer_generator.rb",
