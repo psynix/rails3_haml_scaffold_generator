@@ -56,6 +56,9 @@ Original idea from [Paul Barry's article on custom genrators][OriginalIdea]
         rails generate haml:mailer ExamplesNotifications
         rails generate haml:scaffold FancyModel
 
+8. You can also add --cancan if you use the cancan authorization
+       rails generate scaffold FancyModel <fields> --cancan
+
 ## TODO
 
 * Gemify (?)
