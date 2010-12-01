@@ -1,6 +1,18 @@
 - title t('.title')
 
+<% if options[:cancan] -%>
+- if can? :create, <%= class_name %>
+  %p= link_to t('.new_country'), new_<%= singular_name %>_path
+
+- colspan = 0
+- action = {}
+- for abilty in [:show, :edit, :destroy]
+  - if can? abilty, <%= class_name %>
+    - colspan += 1
+    - action[abilty] = true
+<% else -%>
 %p= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path
+<% end -%>
 
 %table
   %thead
@@ -8,7 +20,12 @@
 <% for attribute in attributes -%>
       %th= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% end -%>
+<% if options[:cancan] -%>
+      - if colspan > 0
+        %th{:colspan => colspan}= t 'actions'
+<% else -%>
       %th{:colspan => 3}= t 'actions'
+<% end -%>
   
   %tbody
     - for <%= singular_name %> in @<%= plural_name %>
@@ -16,6 +33,18 @@
 <% for attribute in attributes -%>
         %td= <%= singular_name %>.<%= attribute.name %>
 <% end -%>
+<% if options[:cancan] -%>
+        - if action[:show]
+          %td.action
+            = link_to t('show'), <%= singular_name %>
+        - if action[:edit]
+          %td.action
+            = link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
+        - if action[:destroy]
+          %td.action
+            = link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete
+<% else -%>
         %td.action= link_to t('show'), <%= singular_name %>
         %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
         %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete
+<% end -%>

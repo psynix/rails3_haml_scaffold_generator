@@ -1,8 +1,15 @@
 - title t('.title')
 
 %p
+<% if options[:cancan] -%>
+  - if can? :index, <%= class_name %>
+    = link_to t('back'), <%= plural_name %>_path
+  - if can? :edit, <%= class_name %>
+    = link_to t('edit'), edit_<%= singular_name %>_path(@<%= singular_name %>)
+<% else -%>
   = link_to t('back'), <%= plural_name %>_path
   = link_to t('edit'), edit_<%= singular_name %>_path(@<%= singular_name %>)
+<% end -%>
 
 %dl
 <% for attribute in attributes -%>
