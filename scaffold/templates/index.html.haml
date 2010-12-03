@@ -2,7 +2,7 @@
 
 <% if options[:cancan] -%>
 - if can? :create, <%= class_name %>
-  %p= link_to t('.new_country'), new_<%= singular_name %>_path
+  %p= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path
 
 - colspan = 0
 - action = {}
