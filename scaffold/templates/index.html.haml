@@ -36,13 +36,16 @@
 <% if options[:cancan] -%>
         - if action[:show]
           %td.action
-            = link_to t('show'), <%= singular_name %>
+            - if can? :show, <%= singular_name %>
+              = link_to t('show'), <%= singular_name %>
         - if action[:edit]
           %td.action
-            = link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
+            - if can? :edit, <%= singular_name %>
+              = link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
         - if action[:destroy]
           %td.action
-            = link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete
+            - if can? :destroy, <%= singular_name %>
+              = link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete
 <% else -%>
         %td.action= link_to t('show'), <%= singular_name %>
         %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)

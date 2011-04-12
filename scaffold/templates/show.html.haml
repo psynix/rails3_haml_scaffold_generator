@@ -4,7 +4,7 @@
 <% if options[:cancan] -%>
   - if can? :index, <%= class_name %>
     = link_to t('back'), <%= plural_name %>_path
-  - if can? :edit, <%= class_name %>
+  - if can? :edit, @<%= singular_name %>
     = link_to t('edit'), edit_<%= singular_name %>_path(@<%= singular_name %>)
 <% else -%>
   = link_to t('back'), <%= plural_name %>_path
