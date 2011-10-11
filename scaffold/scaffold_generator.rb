@@ -4,7 +4,7 @@ require 'rails/generators/resource_helpers'
 module Haml
   module Generators
     class ScaffoldGenerator < Haml::Generators::Base
-      include Rails::Generators::ResourceHelpers
+      include ::Rails::Generators::ResourceHelpers
 
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
