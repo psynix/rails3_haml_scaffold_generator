@@ -1,7 +1,7 @@
 - title t('.title')
 
 <% if options[:cancan] -%>
-- if can? :create, <%= class_name %>
+- if can? :new, <%= class_name %>
   %p.nav= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path, :class => 'new'
 
 - colspan = 0
