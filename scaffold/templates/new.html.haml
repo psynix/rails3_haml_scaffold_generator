@@ -2,8 +2,8 @@
 
 <% if options[:cancan] -%>
 - if can? :index, <%= class_name %>
-  %p= link_to t('back'), <%= plural_name %>_path
+  %p.nav= link_to t('back'), <%= plural_name %>_path, :class => 'index'
 <% else -%>
-%p= link_to t('back'), <%= plural_name %>_path
+%p.nav= link_to t('back'), <%= plural_name %>_path, :class => 'index'
 <% end -%>
 = render 'form'
