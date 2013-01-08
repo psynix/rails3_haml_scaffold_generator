@@ -1,3 +1,9 @@
-%h1= t '.title'
-%p= link_to t('back'), <%= plural_name %>_path
+- title t('.title')
+
+<% if options[:cancan] -%>
+- if can? :index, <%= class_name %>
+  %p.nav= link_to t('back'), <%= plural_name %>_path, :class => 'index'
+<% else -%>
+%p.nav= link_to t('back'), <%= plural_name %>_path, :class => 'index'
+<% end -%>
 = render 'form'

@@ -2,7 +2,7 @@ require 'rails/generators/named_base'
 
 module Haml
   module Generators
-    class Base < Rails::Generators::NamedBase
+    class Base < ::Rails::Generators::NamedBase
       # Automatically sets the source root based on the class name.
       #
       def self.source_root

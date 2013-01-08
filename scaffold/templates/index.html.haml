@@ -1,13 +1,31 @@
-%h1= t('.title')
-%p= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path
+- title t('.title')
 
-%table
+<% if options[:cancan] -%>
+- if can? :new, <%= class_name %>
+  %p.nav= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path, :class => 'new'
+
+- colspan = 0
+- action = {}
+- for abilty in [:show, :edit, :destroy]
+  - if can? abilty, <%= class_name %>
+    - colspan += 1
+    - action[abilty] = true
+<% else -%>
+%p.nav= link_to t('.new_<%= singular_name %>'), new_<%= singular_name %>_path, :class => 'new'
+<% end -%>
+
+-#%table
   %thead
     %tr
 <% for attribute in attributes -%>
       %th= <%= class_name %>.human_attribute_name :<%= attribute.name %>
 <% end -%>
+<% if options[:cancan] -%>
+      - if colspan > 0
+        %th{:colspan => colspan}= t 'actions'
+<% else -%>
       %th{:colspan => 3}= t 'actions'
+<% end -%>
   
   %tbody
     - for <%= singular_name %> in @<%= plural_name %>
@@ -15,6 +33,49 @@
 <% for attribute in attributes -%>
         %td= <%= singular_name %>.<%= attribute.name %>
 <% end -%>
-        %td.action= link_to t('show'), <%= singular_name %>
-        %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>)
-        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure'), :method => :delete
+<% if options[:cancan] -%>
+        - if action[:show]
+          %td.action
+            - if can? :show, <%= singular_name %>
+              = link_to t('show'), <%= singular_name %>, :class => 'show'
+        - if action[:edit]
+          %td.action
+            - if can? :edit, <%= singular_name %>
+              = link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>), :class => 'edit'
+        - if action[:destroy]
+          %td.action
+            - if can? :destroy, <%= singular_name %>
+              = link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
+<% else -%>
+        %td.action= link_to t('show'), <%= singular_name %>, :class => 'show'
+        %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>), :class => 'edit'
+        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
+<% end -%>
+
+= grid @grid do |g|
+<% for attribute in attributes -%>
+  - g.column :name => <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
+    :attribute => '<%= attribute.name %>' do |<%= singular_name %>|
+    - <%= singular_name %>.<%= attribute.name %>
+<% end -%>
+<% if options[:cancan] -%>
+  - if action[:show]
+    - g.column do |<%= singular_name %>|
+      - if can? :show, <%= singular_name %>
+        - link_to t('show'), <%= singular_name %>, :class => 'show'
+  - if action[:edit]
+    - g.column do |<%= singular_name %>|
+      - if can? :edit, <%= singular_name %>
+        - link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>), :class => 'edit'
+  - if action[:destroy]
+    - g.column do |<%= singular_name %>|
+      - if can? :destroy, <%= singular_name %>
+        - link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
+<% else -%>
+  - g.column do |<%= singular_name %>|
+    - link_to t('show'), <%= singular_name %>, :class => 'show'
+  - g.column do |<%= singular_name %>|
+    - link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>), :class => 'edit'
+  - g.column do |<%= singular_name %>|
+    - link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
+<% end -%>

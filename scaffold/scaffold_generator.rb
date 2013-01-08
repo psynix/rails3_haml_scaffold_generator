@@ -4,12 +4,13 @@ require 'rails/generators/resource_helpers'
 module Haml
   module Generators
     class ScaffoldGenerator < Haml::Generators::Base
-      include Rails::Generators::ResourceHelpers
+      include ::Rails::Generators::ResourceHelpers
 
       argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
       class_option :layout,    :type => :boolean
       class_option :singleton, :type => :boolean, :desc => "Supply to skip index view"
+      class_option :cancan,    :type => :boolean, :desc => "Use cancan patterns"
 
       def create_root_folder
         empty_directory File.join("app/views", controller_file_path)
@@ -18,6 +19,10 @@ module Haml
       def copy_index_file
         return if options[:singleton]
         copy_view :index
+      end
+
+      def copy_destroy_file
+        copy_coffee :destroy
       end
 
       def copy_edit_file
@@ -42,9 +47,15 @@ module Haml
       end
 
       protected
-        def copy_view(view)
-          template "#{view}.html.haml", File.join("app/views", controller_file_path, "#{view}.html.haml")
-        end
+
+      def copy_coffee(view)
+        template "#{view}.js.coffee", File.join("app/views", controller_file_path, "#{view}.js.coffee")
+      end
+
+      def copy_view(view)
+        template "#{view}.html.haml", File.join("app/views", controller_file_path, "#{view}.html.haml")
+      end
+
     end
   end
 end
