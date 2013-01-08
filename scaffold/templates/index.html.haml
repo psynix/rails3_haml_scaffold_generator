@@ -45,17 +45,17 @@
         - if action[:destroy]
           %td.action
             - if can? :destroy, <%= singular_name %>
-              = link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy'
+              = link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
 <% else -%>
         %td.action= link_to t('show'), <%= singular_name %>, :class => 'show'
         %td.action= link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>), :class => 'edit'
-        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy'
+        %td.action= link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
 <% end -%>
 
 = grid @grid do |g|
 <% for attribute in attributes -%>
-  - g.column :column_name => <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
-    :attribute_name => '<%= attribute.name %>' do |<%= singular_name %>|
+  - g.column :name => <%= class_name %>.human_attribute_name(:<%= attribute.name %>),
+    :attribute => '<%= attribute.name %>' do |<%= singular_name %>|
     - <%= singular_name %>.<%= attribute.name %>
 <% end -%>
 <% if options[:cancan] -%>
@@ -70,12 +70,12 @@
   - if action[:destroy]
     - g.column do |<%= singular_name %>|
       - if can? :destroy, <%= singular_name %>
-        - link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy'
+        - link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
 <% else -%>
   - g.column do |<%= singular_name %>|
     - link_to t('show'), <%= singular_name %>, :class => 'show'
   - g.column do |<%= singular_name %>|
     - link_to t('edit'), edit_<%= singular_name %>_path(<%= singular_name %>), :class => 'edit'
   - g.column do |<%= singular_name %>|
-    - link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy'
+    - link_to t('destroy'), <%= singular_name %>, :confirm => t('are_you_sure', :default => 'Are you sure?'), :method => :delete, :class => 'destroy', :remote => true
 <% end -%>

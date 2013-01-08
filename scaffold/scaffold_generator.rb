@@ -21,6 +21,10 @@ module Haml
         copy_view :index
       end
 
+      def copy_destroy_file
+        copy_coffee :destroy
+      end
+
       def copy_edit_file
         copy_view :edit
       end
@@ -43,9 +47,15 @@ module Haml
       end
 
       protected
-        def copy_view(view)
-          template "#{view}.html.haml", File.join("app/views", controller_file_path, "#{view}.html.haml")
-        end
+
+      def copy_coffee(view)
+        template "#{view}.js.coffee", File.join("app/views", controller_file_path, "#{view}.js.coffee")
+      end
+
+      def copy_view(view)
+        template "#{view}.html.haml", File.join("app/views", controller_file_path, "#{view}.html.haml")
+      end
+
     end
   end
 end
